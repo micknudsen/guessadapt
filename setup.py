@@ -11,6 +11,10 @@ setup(
         'console_scripts': ['guessadapt = guessadapt:main']
     },
 
+    install_requires=[
+        'biopython'
+    ],
+
     author='Michael Knudsen',
     author_email='michaelk@clin.au.dk',
     license='MIT'

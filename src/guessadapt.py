@@ -1,4 +1,7 @@
 import argparse
+import gzip
+
+from Bio import SeqIO
 
 
 def main():
@@ -9,3 +12,7 @@ def main():
     parser.add_argument('--adapter_list', '-a', required=True)
 
     args = parser.parse_args()
+
+    with gzip.open(args.fastq_file, 'rt') as handle:
+        for record in SeqIO.parse(handle, 'fastq'):
+            break
