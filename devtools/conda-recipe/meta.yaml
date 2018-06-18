@@ -1,0 +1,18 @@
+package:
+  name: guessadapt
+  version: '0.1'
+
+source:
+  git_rev: 0.1
+  git_url: git@github.com:micknudsen/guessadapt.git
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python >=3.6
+    - setuptools
+  run:
+    - python >=3.6
+    - biopython
