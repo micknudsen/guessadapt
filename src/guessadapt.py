@@ -2,6 +2,7 @@ import argparse
 import gzip
 
 from Bio import SeqIO
+from collections import Counter
 
 
 def main():
@@ -21,7 +22,14 @@ def main():
             sequence, *name = line.split('\t')
             adapters[sequence] = name
 
+    adapter_counts = Counter()
+
     with gzip.open(args.fastq_file, 'rt') as handle:
         for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
             if n > args.sequence_limit:
                 break
+            for adapter in adapters:
+                if adapter in record.seq:
+                    adapter_counts[adapter] += 1
+
+    print(adapter_counts)
