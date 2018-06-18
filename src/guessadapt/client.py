@@ -5,6 +5,15 @@ from Bio import SeqIO
 from collections import Counter
 
 
+def parse_adapter_list(filename):
+    adapters = {}
+    with open(filename, 'r') as handle:
+        for line in handle.read().splitlines():
+            sequence, *name = line.split('\t')
+            adapters[sequence] = name
+    return adapters
+
+
 def main():
 
     parser = argparse.ArgumentParser()
@@ -15,12 +24,7 @@ def main():
 
     args = parser.parse_args()
 
-    adapters = {}
-
-    with open(args.adapter_list, 'r') as handle:
-        for line in handle.read().splitlines():
-            sequence, *name = line.split('\t')
-            adapters[sequence] = name
+    adapters = parse_adapter_list(args.adapter_list)
 
     adapter_counts = Counter()
 
