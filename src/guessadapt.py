@@ -32,4 +32,4 @@ def main():
                 if adapter in record.seq:
                     adapter_counts[adapter] += 1
 
-    print(adapter_counts)
+    print(adapter_counts.most_common()[0][0])
