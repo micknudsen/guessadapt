@@ -1,8 +1,4 @@
-class GuessAdaptError(Exception):
-    """Base class for all guessadapt exceptions."""
-
-
-class ParserError(GuessAdaptError):
+class ParserError(Exception):
 
     def __init__(self, message):
         self.message = message
