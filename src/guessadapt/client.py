@@ -32,6 +32,19 @@ def parse_adapter_list(adapter_list_file):
     return result
 
 
+def count_adapters(fastq_file, adapter_list_file, sequence_limit):
+    adapters = parse_adapter_list(adapter_list_file=adapter_list_file)
+    adapter_counts = Counter()
+    with gzip.open(fastq_file, 'rt') as handle:
+        for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
+            if n > sequence_limit:
+                break
+            for adapter in adapters:
+                if adapter in record.seq:
+                    adapter_counts[adapter] += 1
+    return adapter_counts
+
+
 def main():
 
     parser = argparse.ArgumentParser()
@@ -48,14 +61,8 @@ def main():
         logging.error(e.message)
         sys.exit(1)
 
-    adapter_counts = Counter()
-
-    with gzip.open(args.fastq_file, 'rt') as handle:
-        for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
-            if n > args.sequence_limit:
-                break
-            for adapter in adapters:
-                if adapter in record.seq:
-                    adapter_counts[adapter] += 1
+    adapter_counts = count_adapters(fastq_file=args.fastq_file,
+                                    adapter_list_file=args.adapter_list_file,
+                                    sequence_limit=args.sequence_limit)
 
     print(adapter_counts.most_common()[0][0])
