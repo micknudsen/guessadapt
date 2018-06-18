@@ -1,5 +1,6 @@
 import argparse
 import gzip
+import logging
 import sys
 
 from Bio import SeqIO
@@ -8,15 +9,24 @@ from collections import Counter
 from guessadapt.exceptions import ParserError
 
 
+logging.basicConfig(format='[%(levelname)s] %(message)s', level=logging.DEBUG)
+
+
 def parse_adapter_list(filename):
-    """Returns dictionary with adapater sequences as keys and adapter names as values."""
+    """Returns dictionary with adapater sequences as keys and adapter names as values.
+
+    The adapter list file must be tab-separated with two columns. The first (resp. second)
+    column should contain the adapter sequence (resp. adapter name). For example:
+
+    CTGTCTCTTATA	Nextera Transposase
+    AGATCGGAAGAGC	Illumina TruSeq
+    """
     result = {}
     with open(filename, 'r') as handle:
         for line in handle.read().splitlines():
             parts = line.split('\t')
             if not len(parts) == 2:
-                raise ParserError(message='Adapter list must be tab-separated with two columns '
-                                          'containing adapter sequences and names, respectively.')
+                raise ParserError(message='The adapter list must be tab-separated with two columns.')
             sequence, name = parts
             result[sequence] = name
     return result
@@ -35,7 +45,7 @@ def main():
     try:
         adapters = parse_adapter_list(args.adapter_list)
     except ParserError as e:
-        print(e.message)
+        logging.error(e.message)
         sys.exit(1)
 
     adapter_counts = Counter()
