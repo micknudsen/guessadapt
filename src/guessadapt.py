@@ -14,6 +14,13 @@ def main():
 
     args = parser.parse_args()
 
+    adapters = {}
+
+    with open(args.adapter_list, 'r') as handle:
+        for line in handle.read().splitlines():
+            sequence, *name = line.split('\t')
+            adapters[sequence] = name
+
     with gzip.open(args.fastq_file, 'rt') as handle:
         for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
             if n > args.sequence_limit:
