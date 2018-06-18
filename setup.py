@@ -8,7 +8,7 @@ setup(
     package_dir={'': 'src'},
 
     entry_points={
-        'console_scripts': ['guessadapt = guessadapt:main']
+        'console_scripts': ['guessadapt = guessadapt.client:main']
     },
 
     install_requires=[
