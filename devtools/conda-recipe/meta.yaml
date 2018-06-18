@@ -1,6 +1,6 @@
 package:
   name: guessadapt
-  version: '0.1-alpha.0'
+  version: '0.1_alpha.0'
 
 source:
   git_rev: v0.1-alpha.0
