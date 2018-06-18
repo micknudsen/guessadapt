@@ -1,9 +1,9 @@
 package:
   name: guessadapt
-  version: '0.1'
+  version: '0.1-alpha.0'
 
 source:
-  git_rev: v0.1
+  git_rev: v0.1-alpha.0
   git_url: git@github.com:micknudsen/guessadapt.git
 
 build:
