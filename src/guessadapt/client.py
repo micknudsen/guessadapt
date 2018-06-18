@@ -12,7 +12,7 @@ from guessadapt.exceptions import ParserError
 logging.basicConfig(format='[%(levelname)s] %(message)s', level=logging.DEBUG)
 
 
-def parse_adapter_list(filename):
+def parse_adapter_list(adapter_list_file):
     """Returns dictionary with adapater sequences as keys and adapter names as values.
 
     The adapter list file must be tab-separated with two columns. The first (resp. second)
@@ -22,7 +22,7 @@ def parse_adapter_list(filename):
     AGATCGGAAGAGC	Illumina TruSeq
     """
     result = {}
-    with open(filename, 'r') as handle:
+    with open(adapter_list_file, 'r') as handle:
         for line in handle.read().splitlines():
             parts = line.split('\t')
             if not len(parts) == 2:
@@ -37,13 +37,13 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--fastq_file', '-f', required=True)
-    parser.add_argument('--adapter_list', '-a', required=True)
+    parser.add_argument('--adapter_list_file', '-a', required=True)
     parser.add_argument('--sequence_limit', '-n', type=int, required=True)
 
     args = parser.parse_args()
 
     try:
-        adapters = parse_adapter_list(args.adapter_list)
+        adapters = parse_adapter_list(args.adapter_list_file)
     except ParserError as e:
         logging.error(e.message)
         sys.exit(1)
