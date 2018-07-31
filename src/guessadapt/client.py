@@ -30,9 +30,11 @@ def main():
 
     parser = argparse.ArgumentParser()
 
+    default_adapters = 'CTGTCTCTTATA,AGATCGGAAGAGC'
+
     parser.add_argument('--fastq', '-f', required=True)
     parser.add_argument('--limit', '-n', type=int, required=False)
-    parser.add_argument('--adapters', '-a', type=str, required=False, default='CTGTCTCTTATA,AGATCGGAAGAGC')
+    parser.add_argument('--adapters', '-a', type=str, required=False, default=default_adapters)
 
     args = parser.parse_args()
 
