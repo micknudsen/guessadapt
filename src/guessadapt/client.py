@@ -9,12 +9,12 @@ from collections import Counter
 from guessadapt.exceptions import ParserError
 
 
-def count_adapters(fastq_file, sequence_limit):
+def count_adapters(fastq_file, sequence_limit=None):
     adapters = ['CTGTCTCTTATA', 'AGATCGGAAGAGC']
     adapter_counts = Counter()
     with gzip.open(fastq_file, 'rt') as handle:
         for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
-            if n > sequence_limit:
+            if sequence_limit and n > sequence_limit:
                 break
             for adapter in adapters:
                 if adapter in record.seq:
@@ -27,7 +27,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--fastq_file', '-f', required=True)
-    parser.add_argument('--sequence_limit', '-n', type=int, required=True)
+    parser.add_argument('--sequence_limit', '-n', type=int, required=False)
 
     args = parser.parse_args()
 
