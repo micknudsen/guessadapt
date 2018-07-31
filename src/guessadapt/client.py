@@ -1,6 +1,5 @@
 import argparse
 import gzip
-import logging
 import sys
 
 from Bio import SeqIO
@@ -8,9 +7,6 @@ from Bio.Seq import Seq
 from collections import Counter
 
 from guessadapt.exceptions import ParserError
-
-
-logging.basicConfig(format='[%(levelname)s] %(message)s', level=logging.DEBUG)
 
 
 def count_adapters(fastq_file, sequence_limit):
