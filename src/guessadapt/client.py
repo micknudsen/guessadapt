@@ -7,6 +7,14 @@ from collections import Counter
 
 
 def count_adapters(fastq_file, adapters, sequence_limit=None):
+    """Counts number of occurrences of each adapter in `adapters` list
+    in the `fastq_file`. Number of sequences to consider may be limited
+    using the optional `sequence_limit` parameter.
+
+    :param fastq_file str: Path to FASTQ file
+    :param adapters list: List of adapters (strings)
+    :param sequence_limit int: Maximal number of sequence to consider
+    """
     adapter_counts = Counter()
     with gzip.open(fastq_file, 'rt') as handle:
         for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
