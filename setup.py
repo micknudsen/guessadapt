@@ -18,7 +18,7 @@ setup(
     ],
 
     author='Michael Knudsen',
-    author_email='michaelk@clin.au.dk',
+    author_email='micknudsen@gmail.com',
     license='MIT'
 
 )
