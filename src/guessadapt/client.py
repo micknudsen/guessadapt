@@ -49,4 +49,6 @@ def main():
                                     limit=args.limit,
                                     adapters=args.adapters.split(','))
 
-    print(adapter_counts.most_common()[0][0])
+    adapter, count = adapter_counts.most_common()[0]
+
+    print(adapter)
