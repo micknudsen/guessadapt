@@ -6,8 +6,6 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from collections import Counter
 
-from guessadapt.exceptions import ParserError
-
 
 def count_adapters(fastq_file, adapters, sequence_limit=None):
     adapter_counts = Counter()
