@@ -41,7 +41,7 @@ def main():
 
     parser.add_argument('--fastq', '-f', required=True, help='path to input FASTQ file')
     parser.add_argument('--limit', '-n', type=int, required=False, help='maximal number of reads to consider')
-    parser.add_argument('--adapters', '-a', required=False, default=default_adapters, help='mommma-separated list of adapters')
+    parser.add_argument('--adapters', '-a', required=False, default=default_adapters, help='commma-separated list of adapters')
 
     args = parser.parse_args()
 
