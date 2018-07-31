@@ -6,19 +6,19 @@ from Bio import SeqIO
 from collections import Counter
 
 
-def count_adapters(fastq_file, adapters, sequence_limit=None):
-    """Counts number of occurrences in `fastq_file` of each adapter
+def count_adapters(fastq, adapters, limit=None):
+    """Counts number of occurrences in `fastq` of each adapter
     in `adapters` list. The number of sequences to consider may be
     limited be specifying the optional `sequence_limit` parameter.
 
-    :param fastq_file str: Path to FASTQ file
+    :param fastq str: Path to FASTQ file
     :param adapters list: List of adapters (strings)
-    :param sequence_limit int: Maximal number of sequence to consider
+    :param limit int: Maximal number of sequence to consider
     """
     adapter_counts = Counter()
-    with gzip.open(fastq_file, 'rt') as handle:
+    with gzip.open(fastq, 'rt') as handle:
         for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
-            if sequence_limit and n > sequence_limit:
+            if limit and n > limit:
                 break
             for adapter in adapters:
                 if adapter in record.seq:
@@ -30,14 +30,14 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--fastq_file', '-f', required=True)
-    parser.add_argument('--sequence_limit', '-n', type=int, required=False)
+    parser.add_argument('--fastq', '-f', required=True)
+    parser.add_argument('--limit', '-n', type=int, required=False)
     parser.add_argument('--adapters', '-a', type=str, required=False, default='CTGTCTCTTATA,AGATCGGAAGAGC')
 
     args = parser.parse_args()
 
-    adapter_counts = count_adapters(fastq_file=args.fastq_file,
-                                    sequence_limit=args.sequence_limit,
+    adapter_counts = count_adapters(fastq=args.fastq,
+                                    limit=args.limit,
                                     adapters=args.adapters.split(','))
 
     print(adapter_counts.most_common()[0][0])
