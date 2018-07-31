@@ -11,6 +11,8 @@ setup(
         'console_scripts': ['guessadapt = guessadapt.client:main']
     },
 
+    python_requires='>=3.6',
+
     install_requires=[
         'biopython'
     ],
