@@ -7,9 +7,9 @@ from collections import Counter
 
 
 def count_adapters(fastq_file, adapters, sequence_limit=None):
-    """Counts number of occurrences of each adapter in `adapters` list
-    in the `fastq_file`. Number of sequences to consider may be limited
-    using the optional `sequence_limit` parameter.
+    """Counts number of occurrences in `fastq_file` of each adapter
+    in `adapters` list. The number of sequences to consider may be
+    limited be specifying the optional `sequence_limit` parameter.
 
     :param fastq_file str: Path to FASTQ file
     :param adapters list: List of adapters (strings)
