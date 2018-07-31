@@ -10,15 +10,15 @@ from guessadapt.exceptions import ParserError
 
 
 def count_adapters(fastq_file, sequence_limit):
-    adapters = [Seq('CTGTCTCTTATA'), Seq('AGATCGGAAGAGC')]
+    adapters = ['CTGTCTCTTATA', 'AGATCGGAAGAGC']
     adapter_counts = Counter()
     with gzip.open(fastq_file, 'rt') as handle:
         for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
             if n > sequence_limit:
                 break
             for adapter in adapters:
-                if str(adapter) in record.seq:
-                    adapter_counts[str(adapter)] += 1
+                if adapter in record.seq:
+                    adapter_counts[adapter] += 1
     return adapter_counts
 
 
