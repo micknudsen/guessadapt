@@ -30,7 +30,14 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    default_adapters = 'CTGTCTCTTATA,AGATCGGAAGAGC'
+    # If no adapters are specified by the user, the following
+    # three sequences are used as default:
+    #
+    # Illumina:   AGATCGGAAGAGC
+    # Small RNA:  TGGAATTCTCGG
+    # Nextera:    CTGTCTCTTATA
+
+    default_adapters = 'AGATCGGAAGAGC,TGGAATTCTCGG,CTGTCTCTTATA'
 
     parser.add_argument('--fastq', '-f', required=True)
     parser.add_argument('--limit', '-n', type=int, required=False)
