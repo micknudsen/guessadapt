@@ -28,7 +28,7 @@ def count_adapters(fastq, adapters, limit=None):
 
 def main():
 
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser()
 
     # If no adapters are specified by the user, the following
     # three sequences are used as default:
@@ -41,7 +41,7 @@ def main():
 
     parser.add_argument('--fastq', '-f', required=True, help='path to input FASTQ file')
     parser.add_argument('--limit', '-n', type=int, required=False, help='maximal number of reads to consider')
-    parser.add_argument('--adapters', '-a', required=False, default=default_adapters, help='commma-separated list of adapters')
+    parser.add_argument('--adapters', '-a', required=False, default=default_adapters, help='commma-separated list of adapters (default: %(default)s)')
 
     args = parser.parse_args()
 
