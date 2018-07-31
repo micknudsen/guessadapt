@@ -3,7 +3,6 @@ import gzip
 import sys
 
 from Bio import SeqIO
-from Bio.Seq import Seq
 from collections import Counter
 
 
