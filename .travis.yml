@@ -15,5 +15,5 @@ install:
   - source activate test-environment
   - python setup.py install
 script:
-  - coverage run --source=gwf_utilization setup.py test
+  - coverage run --source=guessadapt setup.py test
   - coveralls
