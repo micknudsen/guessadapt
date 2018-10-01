@@ -12,8 +12,8 @@ build:
 requirements:
   build:
     - biopython
-    - python >=3.6
+    - python {{ python }}
     - setuptools
   run:
     - biopython
-    - python >=3.6
+    - python
