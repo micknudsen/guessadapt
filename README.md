@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/micknudsen/guessadapt.svg?branch=master)](https://travis-ci.org/micknudsen/guessadapt) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
+[![install with bioconda](https://img.shields.io/badge/install%20with-conda-brightgreen.svg?style=flat)](https://conda.anaconda.org/micknudsen) [![Build Status](https://travis-ci.org/micknudsen/guessadapt.svg?branch=master)](https://travis-ci.org/micknudsen/guessadapt) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
 
 # guessadapt
 
@@ -19,4 +19,10 @@ optional arguments:
   --adapters ADAPTERS, -a ADAPTERS
                         commma-separated list of adapters (default:
                         AGATCGGAAGAGC,TGGAATTCTCGG,CTGTCTCTTATA)
+```
+
+The simplest way to install `guessadapt` is by using conda:
+
+```
+$ conda install -c micknudsen guessadapt
 ```
