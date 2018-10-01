@@ -1,3 +1,22 @@
 [![Build Status](https://travis-ci.org/micknudsen/guessadapt.svg?branch=master)](https://travis-ci.org/micknudsen/guessadapt) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
 
 # guessadapt
+
+Given a FASTQ file and a list of adapter sequences, `guessadapt` simply counts the number of occurences of each adapter and returns the most frequent. That's it!
+
+
+```
+$ guessadapt --help
+usage: guessadapt [-h] [--limit LIMIT] [--adapters ADAPTERS] fastq
+
+positional arguments:
+  fastq                 path to input FASTQ file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --limit LIMIT, -n LIMIT
+                        maximal number of reads to consider
+  --adapters ADAPTERS, -a ADAPTERS
+                        commma-separated list of adapters (default:
+                        AGATCGGAAGAGC,TGGAATTCTCGG,CTGTCTCTTATA)
+```
