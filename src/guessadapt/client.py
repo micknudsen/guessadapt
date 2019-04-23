@@ -1,9 +1,8 @@
 import argparse
 import gzip
-import sys
+from collections import Counter
 
 from Bio import SeqIO
-from collections import Counter
 
 
 def count_adapters(handle, adapters, limit=None):
@@ -49,6 +48,6 @@ def main():
                                         limit=args.limit,
                                         adapters=args.adapters.split(','))
 
-    adapter, count = adapter_counts.most_common()[0]
+    adapter, _ = adapter_counts.most_common()[0]
 
     print(adapter)
