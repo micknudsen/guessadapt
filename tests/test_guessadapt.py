@@ -1,4 +1,3 @@
-import gzip
 import unittest
 
 from guessadapt.client import count_adapters
@@ -10,7 +9,7 @@ class TestGuessAdapt(unittest.TestCase):
 
         default_adapters = ['AGATCGGAAGAGC', 'TGGAATTCTCGG', 'CTGTCTCTTATA']
 
-        with gzip.open('tests/test.fastq.gz', 'rt') as handle:
+        with open('tests/test.fastq', 'r') as handle:
             adapter_counts = count_adapters(handle=handle,
                                             adapters=default_adapters)
 
