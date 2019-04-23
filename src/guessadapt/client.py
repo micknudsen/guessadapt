@@ -6,23 +6,22 @@ from Bio import SeqIO
 from collections import Counter
 
 
-def count_adapters(fastq, adapters, limit=None):
-    """Counts number of occurrences in `fastq` of each adapter
+def count_adapters(handle, adapters, limit=None):
+    """Counts number of occurrences in `handle` of each adapter
     in `adapters` list. The number of sequences to consider may be
     limited be specifying the optional `sequence_limit` parameter.
 
-    :param fastq str: Path to FASTQ file
+    :param handle: File handle for reading FASTQ file
     :param adapters list: List of adapters (strings)
     :param limit int: Maximal number of sequence to consider
     """
     adapter_counts = Counter()
-    with gzip.open(fastq, 'rt') as handle:
-        for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
-            if limit and n > limit:
-                break
-            for adapter in adapters:
-                if adapter in record.seq:
-                    adapter_counts[adapter] += 1
+    for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
+        if limit and n > limit:
+            break
+        for adapter in adapters:
+            if adapter in record.seq:
+                adapter_counts[adapter] += 1
     return adapter_counts
 
 
@@ -45,9 +44,10 @@ def main():
 
     args = parser.parse_args()
 
-    adapter_counts = count_adapters(fastq=args.fastq,
-                                    limit=args.limit,
-                                    adapters=args.adapters.split(','))
+    with gzip.open(args.fastq, 'rt') as handle:
+        adapter_counts = count_adapters(handle=handle,
+                                        limit=args.limit,
+                                        adapters=args.adapters.split(','))
 
     adapter, count = adapter_counts.most_common()[0]
 
