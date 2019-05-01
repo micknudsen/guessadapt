@@ -17,4 +17,4 @@ requirements:
     - setuptools
   run:
     - biopython
-    - python >=3.5
+    - python >=3.6
