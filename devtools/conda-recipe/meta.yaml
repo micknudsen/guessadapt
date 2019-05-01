@@ -20,6 +20,6 @@ requirements:
     - python >=3.5
 
 about:
-	  home: https://github.com/micknudsen/guessadapt
-	  license: MIT
-	  summary: Guess which adapter was used in an NGS run
+  home: https://github.com/micknudsen/guessadapt
+  license: MIT
+  summary: Guess which adapter was used in an NGS run
