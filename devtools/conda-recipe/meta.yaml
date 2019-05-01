@@ -7,8 +7,9 @@ source:
   git_url: git@github.com:micknudsen/guessadapt.git
 
 build:
-  number: 0
+  noarch: python
   script: "{{ python }} -m pip install . --no-deps -vv"
+  number: 0
 
 requirements:
   build:
