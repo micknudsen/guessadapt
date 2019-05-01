@@ -12,9 +12,9 @@ build:
   number: 0
 
 requirements:
-  build:
-    - python
-    - setuptools
+  host:
+    - pip
+    - python >=3.5
   run:
     - biopython
     - python >=3.5
