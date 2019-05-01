@@ -8,14 +8,13 @@ source:
 
 build:
   noarch: python
-  script: "{{ python }} -m pip install . --no-deps -vv"
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   number: 0
 
 requirements:
   build:
-    - biopython
-    - python {{ python }}
+    - python
     - setuptools
   run:
     - biopython
-    - python
+    - python >=3.5
