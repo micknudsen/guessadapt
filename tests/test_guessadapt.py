@@ -1,6 +1,6 @@
 import unittest
 
-from guessadapt.client import count_adapters
+from guessadapt.core import count_adapters
 
 
 class TestGuessAdapt(unittest.TestCase):
