@@ -7,13 +7,19 @@ source:
   git_url: git@github.com:micknudsen/guessadapt.git
 
 build:
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
   number: 0
 
 requirements:
-  build:
-    - biopython
-    - python {{ python }}
-    - setuptools
+  host:
+    - pip
+    - python >=3.5
   run:
     - biopython
-    - python
+    - python >=3.5
+
+about:
+  home: https://github.com/micknudsen/guessadapt
+  license: MIT
+  summary: Guess which adapter was used in an NGS run
