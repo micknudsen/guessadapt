@@ -22,14 +22,6 @@ class FastqParser:
 
 
 def count_adapters(stream: Iterator[str], adapters: List[str], limit: int = None) -> Counter:
-    """Counts number of occurrences in `handle` of each adapter
-    in `adapters` list. The number of sequences to consider may be
-    limited be specifying the optional `sequence_limit` parameter.
-
-    :param handle: File handle for reading FASTQ file
-    :param adapters list: List of adapters (strings)
-    :param limit int: Maximal number of sequence to consider
-    """
     parser = FastqParser()
     adapter_counts: Counter = Counter()
     for n, record in enumerate(parser.parse(stream), start=1):
