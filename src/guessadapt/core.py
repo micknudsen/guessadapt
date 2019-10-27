@@ -2,6 +2,10 @@ from collections import Counter
 from guessadapt.utils import iterquads
 
 
+class FastqRecord:
+    pass
+
+
 def count_adapters(handle, adapters, limit=None):
     """Counts number of occurrences in `handle` of each adapter
     in `adapters` list. The number of sequences to consider may be
