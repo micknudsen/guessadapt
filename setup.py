@@ -14,7 +14,7 @@ setup(
         'console_scripts': ['guessadapt = guessadapt.client:main']
     },
 
-    python_requires='>=3.5',
+    python_requires='>=3.6',
 
     author='Michael Knudsen',
     author_email='micknudsen@gmail.com',
