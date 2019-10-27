@@ -1,3 +1,5 @@
+from typing import Iterator
+
 from collections import Counter
 from guessadapt.utils import iterquads
 
@@ -10,7 +12,11 @@ class FastqRecord:
 
 
 class FastqParser:
-    pass
+
+    @classmethod
+    def parse(cls, stream: Iterator[str]) -> Iterator[FastqRecord]:
+        name, sequence, _, _ = next(stream), next(stream), next(stream), next(stream)
+        yield FastqRecord(name=name, sequence=sequence)
 
 
 def count_adapters(handle, adapters, limit=None):
