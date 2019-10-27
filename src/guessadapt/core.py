@@ -1,6 +1,6 @@
 from collections import Counter
 
-from Bio import SeqIO
+from Bio import SeqIO  # type: ignore
 
 
 def count_adapters(handle, adapters, limit=None):
