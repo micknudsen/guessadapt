@@ -1,5 +1,5 @@
-# from collections import Counter
-from typing import Iterator  # , List
+from collections import Counter
+from typing import Iterator, List
 
 
 def parse_fastq(stream: Iterator[str]) -> Iterator[str]:
@@ -11,13 +11,12 @@ def parse_fastq(stream: Iterator[str]) -> Iterator[str]:
             break
 
 
-# def count_adapters(stream: Iterator[str], adapters: List[str], limit: int = None) -> Counter:
-#     parser = FastqParser()
-#     adapter_counts: Counter = Counter()
-#     for n, record in enumerate(parser.parse(stream), start=1):
-#         if limit and n > limit:
-#             break
-#         for adapter in adapters:
-#             if adapter in record.sequence:
-#                 adapter_counts[adapter] += 1
-#     return adapter_counts
+def count_adapters(stream: Iterator[str], adapters: List[str], limit: int = None) -> Counter:
+    adapter_counts: Counter = Counter()
+    for n, record in enumerate(parse_fastq(stream), start=1):
+        if limit and n > limit:
+            break
+        for adapter in adapters:
+            if adapter in record:
+                adapter_counts[adapter] += 1
+    return adapter_counts
