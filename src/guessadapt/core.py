@@ -1,6 +1,6 @@
 from collections import Counter
-
-from Bio import SeqIO  # type: ignore
+from guessadapt.utils import iterquads
+# from Bio import SeqIO  # type: ignore
 
 
 def count_adapters(handle, adapters, limit=None):
@@ -13,10 +13,10 @@ def count_adapters(handle, adapters, limit=None):
     :param limit int: Maximal number of sequence to consider
     """
     adapter_counts = Counter()
-    for n, record in enumerate(SeqIO.parse(handle, 'fastq'), start=1):
+    for n, record in enumerate(iterquads(handle), start=1):  # enumerate(SeqIO.parse(handle, 'fastq'), start=1):
         if limit and n > limit:
             break
         for adapter in adapters:
-            if adapter in record.seq:
+            if adapter in record[1]:
                 adapter_counts[adapter] += 1
     return adapter_counts
