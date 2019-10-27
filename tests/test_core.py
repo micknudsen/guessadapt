@@ -1,6 +1,6 @@
 import unittest
 
-from guessadapt.core import FastqParser
+from guessadapt.core import parse_fastq
 
 # from guessadapt.core import count_adapters
 
@@ -12,7 +12,7 @@ class TestFastqParser(unittest.TestCase):
                             '@SequenceB', 'TCGA', '+', 'IIII'])
 
     def test_parser(self):
-        records = list(FastqParser().parse(self.stream))
+        records = list(parse_fastq(self.stream))
         self.assertEqual(records, ['ACGT', 'TCGA'])
 
 
