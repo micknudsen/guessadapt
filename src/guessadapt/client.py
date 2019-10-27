@@ -24,10 +24,7 @@ def main():
     args = parser.parse_args()
 
     with gzip.open(args.fastq, 'rt') as handle:
-        adapter_counts = count_adapters(stream=handle,
-                                        limit=args.limit,
-                                        adapters=args.adapters.split(','))
+        adapter_counts = count_adapters(stream=handle, limit=args.limit, adapters=args.adapters.split(','))
 
-    adapter, _ = adapter_counts.most_common()[0]
-
-    print(adapter)
+    for adapter, count in adapter_counts.most_common():
+        print(adapter, count, sep='\t')
