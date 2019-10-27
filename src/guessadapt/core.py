@@ -1,5 +1,5 @@
 from collections import Counter
-from typing import Iterator
+from typing import Iterator, List
 
 
 class FastqRecord:
@@ -21,7 +21,7 @@ class FastqParser:
                 break
 
 
-def count_adapters(stream, adapters, limit=None):
+def count_adapters(stream: Iterator[str], adapters: List[str], limit: int = None) -> Counter:
     """Counts number of occurrences in `handle` of each adapter
     in `adapters` list. The number of sequences to consider may be
     limited be specifying the optional `sequence_limit` parameter.
@@ -31,7 +31,7 @@ def count_adapters(stream, adapters, limit=None):
     :param limit int: Maximal number of sequence to consider
     """
     parser = FastqParser()
-    adapter_counts = Counter()
+    adapter_counts: Counter = Counter()
     for n, record in enumerate(parser.parse(stream), start=1):
         if limit and n > limit:
             break
