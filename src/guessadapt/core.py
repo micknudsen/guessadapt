@@ -21,7 +21,7 @@ class FastqParser:
                 break
 
 
-def count_adapters(handle, adapters, limit=None):
+def count_adapters(stream, adapters, limit=None):
     """Counts number of occurrences in `handle` of each adapter
     in `adapters` list. The number of sequences to consider may be
     limited be specifying the optional `sequence_limit` parameter.
@@ -32,7 +32,7 @@ def count_adapters(handle, adapters, limit=None):
     """
     parser = FastqParser()
     adapter_counts = Counter()
-    for n, record in enumerate(parser.parse(handle), start=1):
+    for n, record in enumerate(parser.parse(stream), start=1):
         if limit and n > limit:
             break
         for adapter in adapters:
