@@ -3,7 +3,10 @@ from guessadapt.utils import iterquads
 
 
 class FastqRecord:
-    pass
+
+    def __init__(self, name: str, sequence: str) -> None:
+        self.name = name
+        self.sequence = sequence
 
 
 def count_adapters(handle, adapters, limit=None):
