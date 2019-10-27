@@ -8,11 +8,6 @@ class FastqRecord:
         self.name = name
         self.sequence = sequence
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, FastqRecord):
-            return NotImplemented
-        return self.name == other.name and self.sequence == other.sequence
-
 
 class FastqParser:
 

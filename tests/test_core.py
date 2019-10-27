@@ -25,10 +25,10 @@ class TestFastqParser(unittest.TestCase):
                             '@SequenceB', 'TCGA', '+', 'IIII'])
 
     def test_parser(self):
-        parser = FastqParser()
-        records = list(parser.parse(self.stream))
-        self.assertEqual(records, [FastqRecord(name='SequenceA', sequence='ACGT'),
-                                   FastqRecord(name='SequenceB', sequence='TCGA')])
+        records = list(FastqParser().parse(self.stream))
+        self.assertEqual(len(records), 2)
+        self.assertEqual([records[0].name, records[0].sequence], ['SequenceA', 'ACGT'])
+        self.assertEqual([records[1].name, records[1].sequence], ['SequenceB', 'TCGA'])
 
 
 class TestCore(unittest.TestCase):
