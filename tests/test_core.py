@@ -3,7 +3,7 @@ import unittest
 from guessadapt.core import count_adapters
 
 
-class TestGuessAdapt(unittest.TestCase):
+class TestCore(unittest.TestCase):
 
     def test_count_adapters(self):
 
