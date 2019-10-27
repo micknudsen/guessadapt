@@ -2,13 +2,6 @@
 from typing import Iterator  # , List
 
 
-# class FastqRecord:
-
-#     def __init__(self, name: str, sequence: str) -> None:
-#         self.name = name
-#         self.sequence = sequence
-
-
 class FastqParser:
 
     @classmethod
