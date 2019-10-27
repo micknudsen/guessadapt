@@ -1,6 +1,8 @@
 import unittest
 
+from guessadapt.core import FastqParser
 from guessadapt.core import FastqRecord
+
 from guessadapt.core import count_adapters
 
 
@@ -14,6 +16,19 @@ class TestFastqRecord(unittest.TestCase):
 
     def test_sequence(self):
         self.assertEqual(self.record.sequence, 'ACGTTCGA')
+
+
+class TestFastqParser(unittest.TestCase):
+
+    def setUp(self):
+        self.stream = iter(['@SequenceA', 'ACGT', '+', 'IIII',
+                            '@SequenceB', 'TCGA', '+', 'IIII'])
+
+    def test_parser(self):
+        parser = FastqParser()
+        records = list(parser.parse(self.stream))
+        self.assertEqual(records, [FastqRecord(name='SequenceA', sequence='ACGT'),
+                                   FastqRecord(name='SequenceB', sequence='TCGA'))
 
 
 class TestCore(unittest.TestCase):
