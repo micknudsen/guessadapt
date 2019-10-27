@@ -10,13 +10,22 @@ class FastqRecord:
         self.name = name
         self.sequence = sequence
 
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, FastqRecord):
+            return NotImplemented
+        return self.name == other.name and self.sequence == other.sequence
+
 
 class FastqParser:
 
     @classmethod
     def parse(cls, stream: Iterator[str]) -> Iterator[FastqRecord]:
-        name, sequence, _, _ = next(stream), next(stream), next(stream), next(stream)
-        yield FastqRecord(name=name, sequence=sequence)
+        while True:
+            try:
+                name, sequence, _, _ = next(stream), next(stream), next(stream), next(stream)
+                yield FastqRecord(name=name.strip()[1:], sequence=sequence.strip())
+            except StopIteration:
+                break
 
 
 def count_adapters(handle, adapters, limit=None):
