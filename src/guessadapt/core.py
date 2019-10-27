@@ -9,6 +9,10 @@ class FastqRecord:
         self.sequence = sequence
 
 
+class FastqParser:
+    pass
+
+
 def count_adapters(handle, adapters, limit=None):
     """Counts number of occurrences in `handle` of each adapter
     in `adapters` list. The number of sequences to consider may be
