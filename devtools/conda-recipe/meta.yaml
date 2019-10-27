@@ -16,7 +16,6 @@ requirements:
     - pip
     - python >=3.5
   run:
-    - biopython
     - python >=3.5
 
 about:
