@@ -1,7 +1,5 @@
-from typing import Iterator
-
 from collections import Counter
-from guessadapt.utils import iterquads
+from typing import Iterator
 
 
 class FastqRecord:
@@ -37,11 +35,12 @@ def count_adapters(handle, adapters, limit=None):
     :param adapters list: List of adapters (strings)
     :param limit int: Maximal number of sequence to consider
     """
+    parser = FastqParser()
     adapter_counts = Counter()
-    for n, record in enumerate(iterquads(handle), start=1):
+    for n, record in enumerate(parser.parse(handle), start=1):
         if limit and n > limit:
             break
         for adapter in adapters:
-            if adapter in record[1]:
+            if adapter in record.sequence:
                 adapter_counts[adapter] += 1
     return adapter_counts
