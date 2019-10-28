@@ -28,3 +28,7 @@ def main():
 
     for adapter, count in adapter_counts.most_common():
         print(adapter, count, sep='\t')
+
+    for adapter in args.adapters.split(','):
+        if adapter not in adapter_counts:
+            print(adapter, 0, sep='\t')
