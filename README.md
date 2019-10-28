@@ -2,7 +2,7 @@
 
 # guessadapt
 
-Given a FASTQ file and a list of adapter sequences, `guessadapt` simply counts the number of occurences of each adapter and returns the most frequent. That's it!
+Given a FASTQ file and a list of adapter sequences, `guessadapt` simply counts the number of occurences of each adapter and returns sorted list of counts. That's it!
 
 
 ```
