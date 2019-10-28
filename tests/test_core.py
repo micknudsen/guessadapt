@@ -17,17 +17,19 @@ class TestFastqParser(unittest.TestCase):
 
 class TestCore(unittest.TestCase):
 
+    def setUp(self):
+
+        self.adapters = ['ACG', 'CGT', 'TTT']
+
+        self.stream = iter(['@SequenceA', 'ACGT', '+', 'IIII',
+                            '@SequenceB', 'CGTT', '+', 'IIII',
+                            '@SequenceC', 'GACG', '+', 'IIII',
+                            '@SequenceD', 'TTTC', '+', 'IIII',
+                            '@SequenceE', 'TCGT', '+', 'IIII'])
+
     def test_count_adapters(self):
 
-        adapters = ['ACG', 'CGT', 'TTT']
-
-        stream = iter(['@SequenceA', 'ACGT', '+', 'IIII',
-                       '@SequenceB', 'CGTT', '+', 'IIII',
-                       '@SequenceC', 'GACG', '+', 'IIII',
-                       '@SequenceD', 'TTTC', '+', 'IIII',
-                       '@SequenceE', 'TCGT', '+', 'IIII'])
-
-        counts = count_adapters(stream=stream, adapters=adapters)
+        counts = count_adapters(stream=self.stream, adapters=self.adapters)
 
         self.assertEqual(len(counts), 3)
         self.assertEqual(counts['ACG'], 2)
