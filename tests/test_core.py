@@ -38,13 +38,9 @@ class TestCore(unittest.TestCase):
 
     def test_count_adapters_with_limit(self):
 
-        default_adapters = ['AGATCGGAAGAGC', 'TGGAATTCTCGG', 'CTGTCTCTTATA']
+        counts = count_adapters(stream=self.stream, adapters=self.adapters, limit=3)
 
-        with open('tests/test.fastq', 'r') as handle:
-            adapter_counts = count_adapters(stream=handle,
-                                            adapters=default_adapters,
-                                            limit=3)
-
-        self.assertEqual(len(adapter_counts), 1)
-
-        self.assertEqual(adapter_counts['AGATCGGAAGAGC'], 3)
+        self.assertEqual(len(counts), 2)
+        self.assertEqual(counts['ACG'], 2)
+        self.assertEqual(counts['CGT'], 2)
+        self.assertEqual(counts['TTT'], 0)
