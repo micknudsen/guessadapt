@@ -12,9 +12,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+
   tests:
-    # The type of runner that the job will run on
+
+    name: "Python ${{ matrix.python-version }}"
     runs-on: ubuntu-latest
 
     strategy:
