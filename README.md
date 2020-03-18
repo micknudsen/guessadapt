@@ -1,4 +1,4 @@
-[![install with conda](https://anaconda.org/micknudsen/guessadapt/badges/version.svg)](https://anaconda.org/gwforg/gwf) ![CI](https://github.com/micknudsen/guessadapt/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
+[![install with conda](https://anaconda.org/micknudsen/guessadapt/badges/version.svg)](https://anaconda.org/micknudsen/guessadapt) ![CI](https://github.com/micknudsen/guessadapt/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
 
 
 
