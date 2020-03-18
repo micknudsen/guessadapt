@@ -24,10 +24,9 @@ jobs:
         with:
           python-version: "${{ matrix.python-version }}"
 
-      - name: Run a one-line script
-        run: echo Hello, World!
-
-      - name: Run a multi-line script
+      - name: Install package and run unit tests
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          pip install .
+          pip install coveralls
+          coverage run --source=guessadapt setup.py test
+          coveralls
