@@ -27,6 +27,7 @@ jobs:
       - name: Install package and run unit tests
         run: |
           pip install .
+          pip install coverage
           coverage run --source=guessadapt setup.py test
 
       - name: Coveralls GitHub Action
