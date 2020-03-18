@@ -1,4 +1,4 @@
-[![install with conda](https://img.shields.io/badge/install%20with-conda-brightgreen.svg?style=flat)](https://conda.anaconda.org/micknudsen) [![Build Status](https://travis-ci.org/micknudsen/guessadapt.svg?branch=master)](https://travis-ci.org/micknudsen/guessadapt) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
+[![install with conda](https://img.shields.io/badge/install%20with-conda-brightgreen.svg?style=flat)](https://conda.anaconda.org/micknudsen) ![CI](https://github.com/micknudsen/guessadapt/workflows/CI/badge.svg?branch=master) [![Build Status](https://travis-ci.org/micknudsen/guessadapt.svg?branch=master)](https://travis-ci.org/micknudsen/guessadapt) [![Coverage Status](https://coveralls.io/repos/github/micknudsen/guessadapt/badge.svg?branch=master)](https://coveralls.io/github/micknudsen/guessadapt?branch=master)
 
 # guessadapt
 
