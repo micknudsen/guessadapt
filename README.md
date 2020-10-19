@@ -24,3 +24,8 @@ optional arguments:
                         commma-separated list of adapters (default:
                         AGATCGGAAGAGC,TGGAATTCTCGG,CTGTCTCTTATA)
 ```
+
+The recommended way to install `guessadapt` is by using conda:
+```
+$ conda install -c micknudsen guessadapt
+```
